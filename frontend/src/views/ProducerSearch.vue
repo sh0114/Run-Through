@@ -1,7 +1,7 @@
 <template>
     <div id="producerSearch">
         <h1>기획자_검색</h1>
-        <v-container>
+        <v-container class="psc">
           <v-layout row>
             <v-flex xs12>
               <v-card dark tile flat color="error">
@@ -9,7 +9,7 @@
               </v-card>
             </v-flex>
           </v-layout>
-          <v-form ref="form">
+          <v-form ref="form" >
             <v-layout row>
               <v-flex xs6 class="appData">
                 <v-select
@@ -55,7 +55,7 @@
           <v-btn color="green darken-1" flat @click="goPDTheaterInfo">공연장 정보 보기</v-btn>        
         </v-container>
 
-        <v-container>
+        <v-container class="psc">
           <v-layout row>
             <v-flex xs6>
               <v-card dark tile flat>
@@ -195,6 +195,9 @@
 .li{
     text-decoration: none;
     color:black;
+}
+.psc{
+  padding:0%;
 }
 </style>
 
