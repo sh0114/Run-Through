@@ -137,8 +137,6 @@
         },
         search(){
           if(this.$refs.form.validate()){
-            // alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size);
-            alert(this.event_info.size+"");
             if(this.event_info.size=="0~50석") {
               this.event_info.min_size=0;
               this.event_info.max_size=50;
@@ -170,15 +168,14 @@
 
             alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.min_size+""+this.event_info.max_size);
           
-            // this.$http.get('/api/search/'+this.data.location+'/'+this.data.size)
-            // .then((result)=>{
-            //   this.theaters = result.data
-            //   console.log(this.theaters)
-            // })
-            // .cathch((err)=>{
-            //   console.log(err)
-            // })
-            // alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size)
+            this.$http.get('/api/search/'+this.event_info.location+'/'+this.event_info.min_size+'/'+this.event_info.max_size)
+            .then((result)=>{
+              this.theaters = result.data
+              console.log(this.theaters)
+            })
+            .cathch((err)=>{
+              console.log(err)
+            })
           }
           else{
             alert("항목을 다 채워주세요!")
