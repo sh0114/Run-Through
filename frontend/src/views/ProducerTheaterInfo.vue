@@ -1,5 +1,7 @@
 <template>
     <div id="pd_theater_info">
+        
+        <v-container>
         <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
         <v-container>
         <v-flex xs16>
@@ -613,6 +615,8 @@
 
 <style>
 #pd_theater_info{
+    margin-left: 10%;
+    margin-right: 10%;
     margin-bottom: 20px;
     text-align: center;
 }

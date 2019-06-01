@@ -17,7 +17,7 @@
             </v-flex>
 
             <v-flex d-flex xs6 sm6 md4>
-              <v-card v-on:click="goStatistics">통계 요약</v-card>
+              <img :src="require('@/assets/images/03/graph_1.png')" v-on:click="goStatistics"/>
             </v-flex>
             <br><br>
           </v-layout>
