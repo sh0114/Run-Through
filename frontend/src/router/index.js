@@ -21,6 +21,20 @@ export default new Router({
       name: 'TheaterManager',
       component: () => import('../views/TheaterManagerMain.vue')
     },
-
+    {
+      path: '/theater-manager/bookingCalendar',
+      name: 'BookingCalendar',
+      component: () => import('../views/TM/BookingCalendar.vue')
+    },
+    {
+      path: '/theater-manager/statistics',
+      name: 'Statistics',
+      component: () => import('../views/TM/Statistics.vue')
+    },
+    {
+      path: '/theater-manager/review',
+      name: 'Review',
+      component: () => import('../views/TM/Review.vue')
+    },
   ]
 })
