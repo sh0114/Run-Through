@@ -40,7 +40,7 @@ export default {
   margin-top: 50px;
   margin-bottom: 20px;
   width: 10%;
-
+  cursor : pointer;
 }
 
 </style>
