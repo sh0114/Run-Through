@@ -69,7 +69,7 @@
                     <v-card v-for="theater in theaters" class="theater">
                       <router-link
                         class="li"
-                        :to="{name:'ProducerTheaterInfo', params:{theaterId:theater.id}}"
+                        :to="{name:'ProducerTheaterInfo', params:{theaterID:theater.theaterID}}"
                         @click="go">
                         <v-layout>       
                             <v-flex xs6>
@@ -157,9 +157,13 @@
               this.event_info.min_size=400;
               this.event_info.max_size=600;
             }
-            else if(this.event_info.size=="600~1000석") {
+            else if(this.event_info.size=="600~800석") {
               this.event_info.min_size=600;
               this.event_info.max_size=800;
+            }
+            else if(this.event_info.size=="800~1000석") {
+              this.event_info.min_size=800;
+              this.event_info.max_size=1000;
             }
             else if(this.event_info.size=="1000석 이상") {
               this.event_info.min_size=1000;
@@ -171,7 +175,7 @@
             this.$http.get('/api/search/'+this.event_info.location+'/'+this.event_info.min_size+'/'+this.event_info.max_size)
             .then((result)=>{
               console.log(result)
-              this.theaters = result
+              this.theaters = result.data
               console.log(this.theaters)
               alert(result)
             })

@@ -322,6 +322,7 @@
     data () {
       return {
 
+        th_id:'',
         date: new Date().toISOString().substr(0, 10),
         menu: false,
         menu2: false,
@@ -347,7 +348,6 @@
             city : '',
             name: '',
             location : '',
-            time: "09:00 - 21:00",
             size: ' ',
             openYear:'',
             rate:'',
@@ -524,8 +524,9 @@
           alert(this.$route.params.theaterId)
         },
         init(){
-            //this.$route.params.theaterId
-            this.$http.get('/api/theater/FC001672').then((result)=>{
+ 
+            console.log(this.$route.params.theaterID)
+            this.$http.get(`/api/theater/${this.$route.params.theaterID}`).then((result)=>{
                 this.theater = result.data;
             }).catch((err)=>{
                 console.log(err);
@@ -587,7 +588,7 @@
 }
 
 #review{
-    width: 630px;
+    width: 650px;
 }
 
 .my-event {
