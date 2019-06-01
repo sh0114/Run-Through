@@ -20,8 +20,8 @@ export default {
 
 <style>
 #header {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 50px;
+    margin-right: 50px;
 
     background: linear-gradient( to right, #2044AA, #F5695F );
 

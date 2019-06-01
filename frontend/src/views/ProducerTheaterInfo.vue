@@ -1,7 +1,7 @@
 <template>
     <div id="pd_theater_info">
         
-        <v-container>
+        <v-layout column class="psc">
         <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
         <v-container>
         <v-flex xs16>
@@ -313,7 +313,7 @@
             </v-flex>
         </v-layout>
         </v-card>
-        </v-container>
+        </v-layout>
     </div>
 </template>
 
@@ -615,8 +615,8 @@
 
 <style>
 #pd_theater_info{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 50px;
+    margin-right: 50px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -677,5 +677,11 @@
     cursor: pointer;
     margin-bottom: 1px;
   }
+
+  .psc{
+    margin-left: 50px;
+    margin-right: 50px;
+    vertical-align: middle;
+}
 </style>
 
