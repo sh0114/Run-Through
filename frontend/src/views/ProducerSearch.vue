@@ -1,7 +1,7 @@
 <template>
-    <div id="mainpage">
+    <div id="producerSearch">
         <h1>기획자_검색</h1>
-        <v-container>
+        <!-- <v-container> -->
           <v-layout row>
             <v-flex xs12>
               <v-card dark tile flat color="error">
@@ -53,16 +53,17 @@
           </v-form>
           <v-btn color="green darken-1" flat @click="search">검색하기</v-btn>
           <v-btn color="green darken-1" flat @click="goPDTheaterInfo">공연장 정보 보기</v-btn>        
-        </v-container>
+        <!-- </v-container> -->
 
-        <v-container>
+        <!-- <v-container> -->
           <v-layout row>
             <v-flex xs6>
               <v-card dark tile flat>
                 <v-card-text>추천 공연장</v-card-text>
               </v-card>
                 <v-layout row wrap>
-                  <v-flex style="height: 300px" class="scroll-y">
+                  <!-- style="height: 300px" class="scroll-y" -->
+                  <v-flex >
                   
                     <v-card v-for="theater in theaters" class="theater">
                       <router-link
@@ -98,7 +99,7 @@
               </v-card>
             </v-flex>
           </v-layout>
-        </v-container>
+        <!-- </v-container> -->
     </div>
 </template>
 
@@ -154,7 +155,7 @@
               {
                 img: require('@/assets/images/theater2.png'),
                 name: "명보 아트홀",
-                location: "서울특별시 종구 을지로동 마른내로 47",
+                location: "서울특별시 종로구 을지로동 마른내로 47",
                 id: 2,
               },
               {
@@ -181,6 +182,10 @@
 </script>
 
 <style>
+#producerSearch {
+    margin-left: 10%;
+    margin-right: 10%;
+}
 .theater{
   margin:10px;
   color:#AB47BC;
