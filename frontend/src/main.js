@@ -4,6 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import axios from 'axios'
+
+Vue.prototype.$http = Vue.prototype.axios = axios
+
+Vue.use(Vuetify)
+
+import VueSession from 'vue-session'
+Vue.use(VueSession)
+
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

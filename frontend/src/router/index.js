@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import IndexPage from '@/components/IndexPage'
 Vue.use(Router)
 
 export default new Router({
@@ -9,18 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'IndexPage',
-      component: IndexPage
+      name: 'MainPage',
+      component: () => import('../views/MainPage.vue')
     },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/login.vue')
-    },
-    {
-      path: '/hello',
-      name: 'hello',
-      component: () => import('../views/hello.vue')
-    }
   ]
 })
