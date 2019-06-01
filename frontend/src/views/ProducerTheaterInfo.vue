@@ -3,7 +3,6 @@
         
         <v-layout column class="psc">
         <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
-        <v-container>
         <v-flex xs16>
             <v-card dark color="indigo lighten-2">
             <v-card-text id="theater_name">{{theater.name}}</v-card-text>
@@ -682,6 +681,7 @@
     margin-left: 50px;
     margin-right: 50px;
     vertical-align: middle;
+    margin-top: 50px;
 }
 </style>
 

@@ -201,6 +201,7 @@
     margin-left: 50px;
     margin-right: 50px;
     vertical-align: middle;
+    margin-top: 50px;
 }
 </style>
 
