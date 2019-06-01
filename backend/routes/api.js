@@ -10,7 +10,7 @@ const theaterModel = require('../db/models/theater');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=20',function(err, response, body){
+  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=50',function(err, response, body){
       if(!err && response.statusCode == 200){
           var xml = body;
           var result = convert.xml2json(xml, {compact: true, spaces: 4});

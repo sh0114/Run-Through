@@ -66,7 +66,7 @@
                   <!-- style="height: 300px" class="scroll-y" -->
                   <v-flex >
                   
-                    <v-card v-for="(theaters, i) in theaters" class="theater">
+                    <v-card v-for="theater in theaters" class="theater">
                       <router-link
                         class="li"
                         :to="{name:'ProducerTheaterInfo', params:{theaterID:theater.theaterID}}"
@@ -174,10 +174,10 @@
               console.log(result)
               this.theaters = result.data
               console.log(this.theaters)
-              console.log(this.theaters.size())
-              for(var i =1;i<=this.theaters.size();i++) {
+              console.log(this.theaters.length)
+              for(var i =1;i<=this.theaters.length;i++) {
                 if(i>4)i=(i%4+1)
-                this.theaters[i].src=this.data.items[i]
+                this.theaters[i-1].src=this.items[i-1].src
               }
             })
             .catch((err)=>{
@@ -188,9 +188,6 @@
           else{
             alert("항목을 다 채워주세요!")
           }
-        },
-        go(){
-          alert("go")
         }
         
     },
@@ -199,7 +196,7 @@
         return{
            items: [
                 {
-                 src: require('@/assets/images/theater2.png')
+                  src: require('@/assets/images/theater2.png')
                 },
                 {
                     src: require('@/assets/images/theater1.png')
