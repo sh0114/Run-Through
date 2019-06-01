@@ -37,7 +37,8 @@
 #mainBg {
   /* width: 1920px; */
   height: 500px;
-  
+  margin-left: -10%;
+  margin-right: -10%;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -18,9 +18,6 @@ export default {
 
 <style>
 #header {
-    margin-left: 10%;
-    margin-right: 10%;
-    
     background-color: #F5695F;
 }
 
