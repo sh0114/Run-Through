@@ -2,7 +2,8 @@
     <div id="pd_theater_info">
         
         <v-layout column class="psc">
-        <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
+            
+      <h1> </h1>
         <v-flex xs16>
             <v-card dark color="indigo lighten-2">
             <v-card-text id="theater_name">{{theater.name}}</v-card-text>

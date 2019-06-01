@@ -1,8 +1,8 @@
 <template>
     <div id="producerSearch">
-      
         <v-layout class="psc" column>
-        <h1>기획자_검색</h1>
+          
+      <h1> </h1>
           <v-layout row>
             <v-flex xs12>
               <v-card dark tile flat color="error">
@@ -66,18 +66,18 @@
                   <!-- style="height: 300px" class="scroll-y" -->
                   <v-flex >
                   
-                    <v-card v-for="theater in theaters" class="theater">
+                    <v-card v-for="(theaters, i) in theaters" class="theater">
                       <router-link
                         class="li"
                         :to="{name:'ProducerTheaterInfo', params:{theaterID:theater.theaterID}}"
                         @click="go">
                         <v-layout>       
                             <v-flex xs6>
-                              <!-- <v-img
-                                :src= "theater.img"
+                              <v-img
+                                :src= "theater.src"
                                 height="150px"
                                 @click="goPDTheaterInfo"
-                              ></v-img> -->
+                              ></v-img>
                             </v-flex>
                             <v-flex xs6>
                               <v-card-title primary-title>
@@ -169,15 +169,16 @@
               this.event_info.min_size=1000;
               this.event_info.max_size=999999999;
             }
-
-            alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.min_size+""+this.event_info.max_size);
-          
             this.$http.get('/api/search/'+this.event_info.location+'/'+this.event_info.min_size+'/'+this.event_info.max_size)
             .then((result)=>{
               console.log(result)
               this.theaters = result.data
               console.log(this.theaters)
-              alert(result)
+              console.log(this.theaters.size())
+              for(var i =1;i<=this.theaters.size();i++) {
+                if(i>4)i=(i%4+1)
+                this.theaters[i].src=this.data.items[i]
+              }
             })
             .catch((err)=>{
               console.log(err)
@@ -196,6 +197,20 @@
     props:["data"],
     data(){
         return{
+           items: [
+                {
+                 src: require('@/assets/images/theater2.png')
+                },
+                {
+                    src: require('@/assets/images/theater1.png')
+                },
+                {
+                    src: require('@/assets/images/theater3.png')
+                },
+                {
+                    src: require('@/assets/images/theater4.png')
+                }
+            ],
             event_info: {
               location:null,
               term:null,
@@ -216,7 +231,7 @@
       }
     },
     created(){
-      this.reset()
+      
     }
 
   }
