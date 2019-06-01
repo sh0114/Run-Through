@@ -29,17 +29,14 @@
             </v-expansion-panel-content>
         </v-expansion-panel>
 
-        <LinkFooter />
     </div>
 </template>
 
 <script>
 
-  import LinkFooter from '../../components/LinkFooter'
 
   export default {
     components: {
-      LinkFooter,
     },
     data() {
         return {

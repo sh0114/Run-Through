@@ -30,17 +30,14 @@
         
         </v-container>
         
-        <LinkFooter />
     </div>
 </template>
 
 <script>
 
-  import LinkFooter from '../components/LinkFooter'
 
   export default {
     components: {
-      LinkFooter,
     },
     props: {
       month: Number
