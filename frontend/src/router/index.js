@@ -12,12 +12,12 @@ export default new Router({
       component: () => import('../views/MainPage.vue')
     },
     {
-      path: '/producer',
-      name: 'ProducerMain',
-      component: () => import('../views/ProducerMain.vue')
+      path: '/producerResult',
+      name: 'ProducerResult',
+      component: () => import('../views/ProducerResult.vue')
     },
     {
-      path: '/theater-manager',
+      path: '/theaterManager',
       name: 'TheaterManager',
       component: () => import('../views/TheaterManagerMain.vue')
     },
@@ -35,6 +35,16 @@ export default new Router({
       path: '/theater-manager/review',
       name: 'Review',
       component: () => import('../views/TM/Review.vue')
+    },
+    {
+      path: '/producerSearch',
+      name: 'ProducerSearch',
+      component: () => import('../views/ProducerSearch.vue')
+    },
+    {
+      path: '/producerTheaterInfo',
+      name: 'ProducerTheaterInfo',
+      component: () => import('../views/ProducerTheaterInfo.vue')
     },
   ]
 })
