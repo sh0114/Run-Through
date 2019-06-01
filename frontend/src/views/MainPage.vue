@@ -26,8 +26,11 @@
             this.$router.push('/theater-manager')
         },
         getApi(){
-          this.$http.get('/api').then(result=>{
-              console.log(result.data);
+          this.$http.get('/api').then((result)=>{
+                this.$http.get('/api/list').then((result)=>{
+              });
+          }).catch((err)=>{
+            console.log(err);
           });
         }
     },

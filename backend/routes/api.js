@@ -10,32 +10,61 @@ const theaterModel = require('../db/models/theater');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=5',function(err, response, body){
+  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=10',function(err, response, body){
       if(!err && response.statusCode == 200){
           var xml = body;
           var result = convert.xml2json(xml, {compact: true, spaces: 4});
           var answer = JSON.parse(result);
-          console.log(answer);
 
           for (var i in answer.dbs.db){
             var ans = answer.dbs.db[i];
             var theater = new theaterModel({
                 theaterID: ans.mt10id._text,
-                location: ans.sidonm._text,
+                city: ans.sidonm._text,
                 name: ans.fcltynm._text,
                 openYear: ans.opende._text,
             })
-            console.log(ans.fcltynm._text);
 
             theater.save(function(err){
                 if(err)
                     console.log("저장 안됨!!");
             })
           }
-
-          res.send(result);
+          res.send("완료");
       }
   })
 });
+
+router.get('/list',function(req, res, next){
+    theaterModel.find({}, async function(err, result){
+        for(var item of result){
+            await waitFunc(item);
+        }
+        res.send("다시 저장 완료");
+    })
+})
+
+function waitFunc(i){
+    var id = i.theaterID;
+    console.log(id);
+    var url = "http://www.kopis.or.kr/openApi/restful/prfplc/"+id+"?service=bf1f3f149c284564bd1cd14efc61818f"
+    request(url,function(err, response, body){
+        var xml = body;
+        var result = convert.xml2json(xml, {compact: true, spaces: 4});
+        var answer = JSON.parse(result).dbs.db;
+        console.log(answer);
+        theaterModel.findOneAndUpdate({theaterID:id},{
+            city:"수원",
+            size: answer.seatscale._text,
+            telNumber: answer.telno._text,
+            location: answer.adres._text
+        },{upsert:true, 'new': true},function(err, result){
+            if(err)
+            console.log("업데이트 실패");
+
+        });
+    });
+}
+
 
 module.exports = router;
