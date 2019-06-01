@@ -98,6 +98,19 @@
               <v-card dark tile flat>
                 <v-card-text>유사 공연 통계 자료</v-card-text>
               </v-card>
+                <v-layout column>
+                  <v-card class="theater">
+                      <v-img
+                          :src= "require('@/assets/images/03/graph_1.png')"
+                        ></v-img>
+                  </v-card>
+                  <v-card class="theater">
+                      <v-img
+                          :src= "require('@/assets/images/03/graph_2.png')"
+                        ></v-img>
+                      
+                  </v-card>
+                </v-layout>
             </v-flex>
           </v-layout>
         </v-layout>
@@ -124,7 +137,48 @@
         },
         search(){
           if(this.$refs.form.validate()){
-            alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size)
+            // alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size);
+            alert(this.event_info.size+"");
+            if(this.event_info.size=="0~50석") {
+              this.event_info.min_size=0;
+              this.event_info.max_size=50;
+            }
+            else if(this.event_info.size=="50~100석") {
+              this.event_info.min_size=50;
+              this.event_info.max_size=100;
+            }
+            else if(this.event_info.size=="100~200석") {
+              this.event_info.min_size=100;
+              this.event_info.max_size=200;
+            }
+            else if(this.event_info.size=="200~400석") {
+              this.event_info.min_size=200;
+              this.event_info.max_size=400;
+            }
+            else if(this.event_info.size=="400~600석") {
+              this.event_info.min_size=400;
+              this.event_info.max_size=600;
+            }
+            else if(this.event_info.size=="600~1000석") {
+              this.event_info.min_size=600;
+              this.event_info.max_size=800;
+            }
+            else if(this.event_info.size=="1000석 이상") {
+              this.event_info.min_size=1000;
+              this.event_info.max_size=999999999;
+            }
+
+            alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.min_size+""+this.event_info.max_size);
+          
+            // this.$http.get('/api/search/'+this.data.location+'/'+this.data.size)
+            // .then((result)=>{
+            //   this.theaters = result.data
+            //   console.log(this.theaters)
+            // })
+            // .cathch((err)=>{
+            //   console.log(err)
+            // })
+            // alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size)
           }
           else{
             alert("항목을 다 채워주세요!")
@@ -142,7 +196,9 @@
               location:null,
               term:null,
               category:null,
-              size:null 
+              size:null,
+              min_size:null,
+              max_size:null,
             },
             startDate: null,
             endDate: null,

@@ -27,7 +27,7 @@
         },
         getApi(){
           this.$http.get('/api').then(result=>{
-              console.log(result.data);
+              // console.log(result.data);
           });
         }
     },
