@@ -660,7 +660,7 @@
 }
 
 #review{
-    width: 635px;
+    width: 500px;
 }
 
 .my-event {
