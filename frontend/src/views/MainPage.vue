@@ -5,6 +5,7 @@
         <v-btn color="blue darken-1" v-on:click="goPDSearch">공연기획자/제작자</v-btn>
         <v-btn color="blue darken-1" v-on:click="goTM">극장 관계자</v-btn>
         <LinkFooter />
+        
     </div>
 </template>
 
