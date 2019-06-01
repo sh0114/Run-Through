@@ -10,6 +10,7 @@ require('./db/mongo');
 //Router정의
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use(bodyParser.json())
 //Route 정의
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api',apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

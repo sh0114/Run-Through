@@ -10,6 +10,7 @@
     </div>
      <img style="width:100%" 
      :src="require('@/assets/images/01/main_under.png')"/>
+      <v-btn v-on:click="getApi"></v-btn>
       </div>
 </template>
 
@@ -23,6 +24,11 @@
         },
         goTM(){
             this.$router.push('/theater-manager')
+        },
+        getApi(){
+          this.$http.get('/api').then(result=>{
+              console.log(result.data);
+          });
         }
     },
 

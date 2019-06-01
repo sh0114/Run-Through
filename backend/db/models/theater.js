@@ -1,8 +1,8 @@
-const { mongoose } = require('../mongo')
+const { mongoose, autoIncrement } = require('../mongo')
 
 const theaterSchema = new mongoose.Schema({
     theaterID:{
-        type: Number,
+        type: String,
         required: true
     },
     location:{
@@ -17,14 +17,8 @@ const theaterSchema = new mongoose.Schema({
     size:{
         type: Number,
     },
-    la:{
-        type: Double,
-    },
-    lo:{
-        type: Double,
-    },
     rate:{
-        type: Double,
+        type: String,
     },
     telNumber:{
         type: String,
