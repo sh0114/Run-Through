@@ -16,9 +16,7 @@
       LinkFooter,
     },
     methods:{
-        goPDTheaterInfo(){
-            this.$router.push('/producerTheaterInfo')
-        },
+        
         
     },
 
