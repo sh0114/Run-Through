@@ -1,6 +1,5 @@
 <template>
     <div id="TMmainpage">
-        <h1>극장관계자</h1>
         <v-container fluid grid-list-md>
           <v-layout row wrap justify-center>
             <v-flex d-flex xs6 sm6 md4>

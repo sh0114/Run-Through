@@ -1,6 +1,6 @@
 <template>
   <v-app id="app">
-    <p id="titleLogo" v-on:click="goMain">RunThrough</p>
+    <img id="titleLogo" v-on:click="goMain" :src="require('@/assets/images/header logo.png')">
     <Header />
     <router-view id="router"/>
     <LinkFooter />
@@ -36,11 +36,10 @@ export default {
 }
 
 #titleLogo {
-  text-align: left;
-  font-size: 33px;
-  color: #2044AA;
   margin-left: 13%;
   margin-top: 50px;
+  margin-bottom: 20px;
+  width: 10%;
 
 }
 
