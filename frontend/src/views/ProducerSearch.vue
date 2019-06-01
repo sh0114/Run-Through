@@ -58,107 +58,47 @@
         <v-container>
           <v-layout row>
             <v-flex xs6>
-              <v-card dark tile flat color="error">
+              <v-card dark tile flat>
                 <v-card-text>추천 공연장</v-card-text>
               </v-card>
                 <v-layout row wrap>
-                  <v-flex>
-                    <v-card class="theaters" @click="goPDTheaterInfo">
-                      <v-layout>       
-                        <v-flex xs6>
-                          <v-img
-                            :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                            height="150px"
-                            @click="goPDTheaterInfo"
-                          ></v-img>
-                        </v-flex>
-                        <v-flex xs6>
-                          <v-card-title primary-title>
-                            <div>
-                              <div class="headline">공연장 이름</div>
-                              <div>공연장 규모: </div>
-                              <div>평점: </div>
-                              <div>위치: </div>
-                            </div>
-                          </v-card-title>
-                        </v-flex>
-                      <v-layout>
-                    </v-card>
-                    <v-card class="theaters"  @click="goPDTheaterInfo">
-                      <v-layout>       
-                        <v-flex xs6>
-                          <v-img
-                            :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                            height="150px"
-                            @click="goPDTheaterInfo"
-                          ></v-img>
-                        </v-flex>
-                        <v-flex xs6>
-                          <v-card-title primary-title>
-                            <div>
-                              <div class="headline">공연장 이름</div>
-                              <div>공연장 규모: </div>
-                              <div>평점: </div>
-                              <div>위치: </div>
-                            </div>
-                          </v-card-title>
-                        </v-flex>
-                      <v-layout>
-                    </v-card>
-                    <v-card class="theaters" @click="goPDTheaterInfo">
-                      <v-layout>       
-                        <v-flex xs6>
-                          <v-img
-                            :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                            height="150px"
-                            @click="goPDTheaterInfo"
-                          ></v-img>
-                        </v-flex>
-                        <v-flex xs6>
-                          <v-card-title primary-title>
-                            <div>
-                              <div class="headline">공연장 이름</div>
-                              <div>공연장 규모: </div>
-                              <div>평점: </div>
-                              <div>위치: </div>
-                            </div>
-                          </v-card-title>
-                        </v-flex>
-                      <v-layout>
-                    </v-card>
-                    <v-card class="theaters" @click="goPDTheaterInfo">
-                      <v-layout>       
-                        <v-flex xs6>
-                          <v-img
-                            :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                            height="150px"
-                            @click="goPDTheaterInfo"
-                          ></v-img>
-                        </v-flex>
-                        <v-flex xs6>
-                          <v-card-title primary-title>
-                            <div>
-                              <div class="headline">공연장 이름</div>
-                              <div>공연장 규모: </div>
-                              <div>평점: </div>
-                              <div>위치: </div>
-                            </div>
-                          </v-card-title>
-                        </v-flex>
-                      <v-layout>
-                    </v-card>
+                  <v-flex style="height: 300px" class="scroll-y">
+                  
+                    <v-card v-for="theater in theaters" class="theater">
+                      <router-link
+                        class="li"
+                        :to="{name:'ProducerTheaterInfo', params:{theaterId:theater.id}}"
+                        @click="go">
+                        <v-layout>       
+                            <v-flex xs6>
+                              <v-img
+                                :src= "theater.img"
+                                height="150px"
+                                @click="goPDTheaterInfo"
+                              ></v-img>
+                            </v-flex>
+                            <v-flex xs6>
+                              <v-card-title primary-title>
+                                <div>
+                                  <div class="headline">{{theater.name}}</div>
+                                  <div>위치: {{theater.location}}</div>
+                                </div>
+                              </v-card-title>
+                            </v-flex>
+                          <v-layout>
+                        </router-link>
+                      </v-card>
                   </v-flex>
                 </v-layout>
             </v-flex>
            
             <v-flex xs6>
-              <v-card dark tile flat color="error">
+              <v-card dark tile flat>
                 <v-card-text>유사 공연 통계 자료</v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
         </v-container>
-      <LinkFooter />
     </div>
 </template>
 
@@ -176,7 +116,9 @@
           this.$refs.form.reset()
         },
         goPDTheaterInfo(){
+            
             this.$router.push('/producerTheaterInfo')
+
         },
         search(){
           if(this.$refs.form.validate()){
@@ -185,6 +127,9 @@
           else{
             alert("항목을 다 채워주세요!")
           }
+        },
+        go(){
+          alert("go")
         }
         
     },
@@ -198,7 +143,34 @@
               size:null 
             },
             startDate: null,
-            endDate: null
+            endDate: null,
+            theaters:[
+              {
+                img: require('@/assets/images/theater1.png'),
+                name: "대학로 창조 소극장",
+                location: "서울특별시 종로구 창경궁로 259 2층 창조소극장",
+                id: 1,
+              },
+              {
+                img: require('@/assets/images/theater2.png'),
+                name: "명보 아트홀",
+                location: "서울특별시 종구 을지로동 마른내로 47",
+                id: 2,
+              },
+              {
+                img: require('@/assets/images/theater3.png'),
+                name: "두산아트센터",
+                location: "서울특별시 종로구 연지동 270",
+                id: 3,
+              },
+              {
+                img: require('@/assets/images/theater4.png'),
+                name: "강동아트센터",
+                location: "서울특별시 강동구 상일동 동남로 870",
+                id: 4,
+              },            
+            ]
+
         }
     },
     created(){
@@ -209,10 +181,15 @@
 </script>
 
 <style>
-.theaters{
+.theater{
   margin:10px;
   color:#AB47BC;
   padding:10px;
+  text-align: center
+}
+.li{
+    text-decoration: none;
+    color:black;
 }
 </style>
 

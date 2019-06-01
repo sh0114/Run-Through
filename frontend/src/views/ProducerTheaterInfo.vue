@@ -1,6 +1,6 @@
 <template>
     <div id="pd_theater_info">
-        <h1>공연장정보 페이지</h1>
+        <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
         <v-flex xs16>
             <v-card dark color="indigo lighten-2">
             <v-card-text id="theater_name">공연장이름</v-card-text>
@@ -213,6 +213,7 @@
     methods :{
         onClickRegister(){
             alert("예약하기버튼");
+
         },
         
         submit () {
@@ -228,7 +229,14 @@
             this.menu = false
             this.menu2 = false
         },
+        go(){
+          alert(this.$route.params.theaterId)
+        }
     },
+
+    created(){
+      this.alert()
+    }
 
   }
 </script>
