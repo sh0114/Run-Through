@@ -23,7 +23,8 @@
           </v-layout>
           <v-layout wrap justify-center>
             <v-flex d-flex xs12 sm12 md6>
-              <v-card height="100" v-on:click="goReview">후기 보러가기</v-card>
+
+              <h2 style="margin-top:30px;curser:pointer;" v-on:click="goReview">Go to Review Page</h2>
             </v-flex>
           </v-layout>
         
