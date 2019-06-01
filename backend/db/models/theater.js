@@ -1,4 +1,4 @@
-const { mongoose, autoIncrement } = require('../mongo')
+const { mongoose } = require('../mongo')
 
 const theaterSchema = new mongoose.Schema({
     theaterID:{
@@ -32,11 +32,6 @@ const theaterSchema = new mongoose.Schema({
     }]
 })
 
-theaterSchema.plugin(autoIncrement, {
-    model: 'theater',
-    field: 'theaterID',
-    startAt: 1
-});
 
 
 module.exports = mongoose.model('Theater', theaterSchema)
