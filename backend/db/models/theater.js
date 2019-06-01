@@ -3,7 +3,11 @@ const { mongoose } = require('../mongo')
 const theaterSchema = new mongoose.Schema({
     theaterID:{
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    city:{
+        type: String,
     },
     location:{
         type: String,
