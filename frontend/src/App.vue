@@ -1,12 +1,19 @@
 <template>
-  <div id="app">
+  <v-app>
     <router-view/>
-  </div>
+    <LinkFooter />
+  </v-app>
 </template>
 
 <script>
+import LinkFooter from './components/LinkFooter'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+      LinkFooter,
+
+  },
 }
 </script>
 

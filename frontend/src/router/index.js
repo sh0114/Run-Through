@@ -21,6 +21,11 @@ export default new Router({
       name: 'TheaterManager',
       component: () => import('../views/TheaterManagerMain.vue')
     },
+    {
+      path: '/producer/theater/info',
+      name: 'ProducerTheaterInfo',
+      component: () => import('../views/ProducerTheaterInfo.vue')
+    },
 
   ]
 })
