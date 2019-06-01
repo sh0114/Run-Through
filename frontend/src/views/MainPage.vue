@@ -2,7 +2,8 @@
     <div id="mainpage">
         <img :src="require('@/assets/images/run_through_title.jpg')">
         <br>
-        <v-btn color="blue darken-1" v-on:click="test">test</v-btn>
+        <v-btn color="blue darken-1" v-on:click="goPD">공연기획자/제작자</v-btn>
+        <v-btn color="blue darken-1" v-on:click="goTM">극장 관계자</v-btn>
         <LinkFooter />
     </div>
 </template>
@@ -17,11 +18,12 @@
     },
 
     methods:{
-        test(){
-            this.$http.get('http://www.kopis.or.kr/openApi/restful/pblprfr?service={d2e77e9e911447c1b0d90a3ed2a20dbb}').then((res)=>{
-                alert(res.data.p);
-            });
+        goPD(){
+            this.$router.push('/producer')
         },
+        goTM(){
+            this.$router.push('/theater-manager')
+        }
     },
 
     data () {
