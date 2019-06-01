@@ -1,9 +1,10 @@
 <template>
     <div id="pd_theater_info">
         <h1 @click="go">공연장정보 페이지 {{this.$route.params.theaterId}}</h1>
+        <v-container>
         <v-flex xs16>
             <v-card dark color="indigo lighten-2">
-            <v-card-text id="theater_name">공연장이름</v-card-text>
+            <v-card-text id="theater_name">{{theater.name}}</v-card-text>
             </v-card>
         </v-flex>
        
@@ -16,7 +17,7 @@
                         prev-icon="keyboard_arrow_left"
                         next-icon="keyboard_arrow_right">
                             <v-carousel-item
-                                v-for="(item,i) in items"
+                                v-for="(item,i) in theater.items"
                                 :key="i"
                                 :src="item.src"
                             ></v-carousel-item>
@@ -25,11 +26,11 @@
                 
                 <v-flex xs7>
                         <div id="info">
-                            <v-layout row wrap> <div class="info_title">위치</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater_info.location}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">시간</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater_info.time}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">수용가능인원</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater_info.personnel}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">부대시설</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater_info.facilities}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">무대면적</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater_info.size}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">위치</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.location}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">시간</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.time}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">수용가능인원</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.personnel}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">부대시설</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.facilities}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">무대면적</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.size}}</div> </v-layout>
                         </div>
                     </v-card-title>
                 </v-flex>
@@ -172,7 +173,7 @@
                     <v-card-title primary-title style="margin-top:10px">
                         <div class="headline">대관 일정</div>
                     </v-card-title>
-                <v-sheet width="700" height="500">
+                <v-sheet width="500" height="500">
                     <v-calendar
                     :now="today"
                     :value="today"
@@ -310,7 +311,7 @@
             </v-flex>
         </v-layout>
         </v-card>
-
+        </v-container>
     </div>
 </template>
 
@@ -326,6 +327,14 @@
 
         registerForm: false,
 
+        theater: {                theaterId : '',
+                name: '',
+                location : '',
+                time: '',
+                personnel: '',
+                facilities: '',
+                size: ' '},
+
         register_info: {
             category: '',
             size:'',
@@ -333,27 +342,43 @@
             startdate:'',
             enddate:''
         },
-
-        theater_info:{
-            location : "서울특별시 종로구 창경궁로 259 2층 창조소극장",
-            time: "09:00 - 21:00",
-            personnel:"100석",
-            facilities:"무대, 음향, 무대기계, 연습, 피아노",
-            size: "너비 6m * 깊이 5m * 높이 2.8m"
-        },
-        items: [
-          {
-            src: require('@/assets/images/theater1.png')
-          },
-          {
-            src: require('@/assets/images/cat.jpg')
-          },
-          {
-            src: require('@/assets/images/theater1.png')
-          },
-          {
-            src: require('@/assets/images/cat.jpg')
-          }
+        theater_infos:[
+            {
+                theaterId : 1,
+                name: "대학로 창조 소극장",
+                location : "서울특별시 종로구 창경궁로 259 2층 창조소극장",
+                time: "09:00 - 21:00",
+                personnel:"100석",
+                facilities:"무대, 음향, 무대기계",
+                size: "너비 6m * 깊이 5m * 높이 2.8m"
+            },
+            {
+                theaterId : 2,
+                name: "명보 아트홀",
+                location : "서울특별시 종로구 을지로동 마른내로47",
+                time: "09:00 - 21:00",
+                personnel:"200석",
+                facilities:"무대, 음향, 무대기계, 연습, 피아노",
+                size: "너비 6m * 깊이 5m * 높이 2.8m"
+            },
+            {
+                theaterId : 3,
+                name: "두산아트센터",
+                location : "서울특별시 종로구 연지동 270",
+                time: "09:00 - 21:00",
+                personnel:"300석",
+                facilities:"무대, 음향, 피아노",
+                size: "너비 6m * 깊이 5m * 높이 2.8m"
+            },
+            {
+                theaterId : 4,
+                name: "강동아트센터",
+                location : "서울특별시 강동구 상일동 동남로 870",
+                time: "09:00 - 21:00",
+                personnel:"400석",
+                facilities:"무대, 음향, 무대기계, 연습, 피아노",
+                size: "너비 6m * 깊이 5m * 높이 2.8m"
+            }
         ],
         reviews:[
                {
@@ -386,51 +411,51 @@
         today: new Date().getDate().toString,
         events: [
         {
-          title: 'Vacation',
-          details: 'Going to the beach!',
-          date: '2018-12-30',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-10',
           open: false
         },
         {
-          title: 'Vacation',
-          details: 'Going to the beach!',
-          date: '2018-12-31',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-11',
           open: false
         },
         {
-          title: 'Vacation',
-          details: 'Going to the beach!',
-          date: '2019-01-01',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-12',
           open: false
         },
         {
-          title: 'Meeting',
-          details: 'Spending time on how we do not have enough time',
-          date: '2019-01-07',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-13',
           open: false
         },
         {
-          title: '30th Birthday',
-          details: 'Celebrate responsibly',
-          date: '2019-01-03',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-14',
           open: false
         },
         {
-          title: 'New Year',
-          details: 'Eat chocolate until you pass out',
-          date: '2019-01-01',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-15',
           open: false
         },
         {
-          title: 'Conference',
-          details: 'Mute myself the whole time and wonder why I am on this call',
-          date: '2019-01-21',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-16',
           open: false
         },
         {
-          title: 'Hackathon',
-          details: 'Code like there is no tommorrow',
-          date: '2019-02-01',
+          title: '코딩시러',
+          details: '코딩을 싫어하는 개발자의 이야기',
+          date: '2019-06-17',
           open: false
         }
       ],
@@ -459,12 +484,11 @@
         },
         onClickRegister(){
             alert("예약하기버튼");
-
         },
         
         submit () {
             if (this.$refs.form.validate()) {
-                alert(this.register_info.area +  " / " + this.register_info.size)
+                alert(theater_infos[0].name)
                 this.registerForm = false;      
             }
         },
@@ -477,11 +501,111 @@
         },
         go(){
           alert(this.$route.params.theaterId)
+        },
+        init(){
+            if(this.$route.params.theaterId == 1){
+                this.theater = {
+                                    theaterId : 1,
+                                    name: "대학로 창조 소극장",
+                                    location : "서울특별시 종로구 창경궁로 259 2층 창조소극장",
+                                    time: "09:00 - 21:00",
+                                    personnel:"100석",
+                                    facilities:"무대, 음향, 무대기계",
+                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
+                                    items: [
+                                        {
+                                            src: require('@/assets/images/theater1.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        },
+                                        {
+                                            src: require('@/assets/images/theater1.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        }
+                                    ],
+                                };
+            }else if(this.$route.params.theaterId == 2){
+                this.theater =  {
+                                    theaterId : 2,
+                                    name: "명보 아트홀",
+                                    location : "서울특별시 종로구 을지로동 마른내로47",
+                                    time: "09:00 - 21:00",
+                                    personnel:"200석",
+                                    facilities:"무대, 음향, 무대기계, 연습, 피아노",
+                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
+                                    items: [
+                                        {
+                                            src: require('@/assets/images/theater2.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        },
+                                        {
+                                            src: require('@/assets/images/theater2.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        }
+                                    ],
+                                };
+            }else if(this.$route.params.theaterId == 3){
+                this.theater =  {
+                                    theaterId : 3,
+                                    name: "두산아트센터",
+                                    location : "서울특별시 종로구 연지동 270",
+                                    time: "09:00 - 21:00",
+                                    personnel:"300석",
+                                    facilities:"무대, 음향, 피아노",
+                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
+                                    items: [
+                                        {
+                                            src: require('@/assets/images/theater3.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        },
+                                        {
+                                            src: require('@/assets/images/theater3.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        }
+                                    ],
+                                };
+            }else{
+                this.theater =  {
+                                    theaterId : 4,
+                                    name: "강동아트센터",
+                                    location : "서울특별시 강동구 상일동 동남로 870",
+                                    time: "09:00 - 21:00",
+                                    personnel:"400석",
+                                    facilities:"무대, 음향, 무대기계, 연습, 피아노",
+                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
+                                    items: [
+                                        {
+                                            src: require('@/assets/images/theater4.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        },
+                                        {
+                                            src: require('@/assets/images/theater4.png')
+                                        },
+                                        {
+                                            src: require('@/assets/images/cat.jpg')
+                                        }
+                                    ],
+                                };
+
+            }
         }
     },
-
-    created(){
-      this.alert()
+    
+    created (){
+        this.init();
     }
 
   }
@@ -489,8 +613,6 @@
 
 <style>
 #pd_theater_info{
-    margin-left: 50px;
-    margin-right: 50px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -518,24 +640,23 @@
 }
 
 #rate{
-    margin-left: 170px;
+    margin-left: 110px;
     margin-top: 70px;
 }
 
 .info_title{
     width: 120px;
     text-align: left;
-
 }
 
 .similar{
-    height: 600px;
-    width: 400px;
+    height: 500px;
+    width: 300px;
     margin-left: 35px;
 }
 
 #review{
-    width: 700px;
+    width: 635px;
 }
 
 .my-event {
