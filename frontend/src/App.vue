@@ -33,9 +33,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 #titleLogo {
