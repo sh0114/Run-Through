@@ -18,7 +18,7 @@
                         prev-icon="keyboard_arrow_left"
                         next-icon="keyboard_arrow_right">
                             <v-carousel-item
-                                v-for="(item,i) in theater.items"
+                                v-for="(item,i) in items"
                                 :key="i"
                                 :src="item.src"
                             ></v-carousel-item>
@@ -28,10 +28,10 @@
                 <v-flex xs7>
                         <div id="info">
                             <v-layout row wrap> <div class="info_title">위치</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.location}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">시간</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.time}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">수용가능인원</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.personnel}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">부대시설</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.facilities}}</div> </v-layout>
-                            <v-layout row wrap> <div class="info_title">무대면적</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.size}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">시간</div> &nbsp;&nbsp;&nbsp; <div style="width=200px"></div>09:00 - 21:00</v-layout>
+                            <v-layout row wrap> <div class="info_title">수용가능인원</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.size}}</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">부대시설</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">무대, 음향, 무대기계, 연습, 피아노</div> </v-layout>
+                            <v-layout row wrap> <div class="info_title">공연장 연락처</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.telNumber}}</div> </v-layout>
                         </div>
                     </v-card-title>
                 </v-flex>
@@ -274,12 +274,12 @@
             <v-layout row wrap>
             <v-flex xs4 sm4>
                 <v-card class="similar">
-                    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="400px"/>
+                    <v-img :src="require('@/assets/images/theater1.png')" height="350px"/>
 
                     <v-card-title primary-title>
                         <div>
-                            <div class="headline">유사1</div>
-                            <span class="grey--text">1,000 miles of wonder</span>
+                            <div class="headline">대학로 창조 소극장</div>
+                            <span class="grey--text">서울특별시 종로구 창경궁로 259 2층 창조소극장</span>
                         </div>
                     </v-card-title>
                 </v-card>
@@ -287,12 +287,12 @@
 
             <v-flex xs4 sm4>
                 <v-card class="similar">
-                    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="400px"/>
+                    <v-img :src="require('@/assets/images/theater2.png')" height="350px"/>
 
                     <v-card-title primary-title>
                         <div>
-                            <div class="headline">유사2</div>
-                            <span class="grey--text">1,000 miles of wonder</span>
+                            <div class="headline">명보 아트홀</div>
+                            <span class="grey--text">서울특별시 종로구 을지로동 마른내로47</span>
                         </div>
                     </v-card-title>
                 </v-card>
@@ -300,12 +300,12 @@
 
             <v-flex xs4 sm4>
                 <v-card class="similar">
-                    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="400px"/>
+                    <v-img :src="require('@/assets/images/theater3.png')" height="350px"/>
 
                     <v-card-title primary-title>
                         <div>
-                            <div class="headline">유사3</div>
-                            <span class="grey--text">1,000 miles of wonder</span>
+                            <div class="headline">두산아트센터</div>
+                            <span class="grey--text">서울특별시 종로구 연지동 270</span>
                         </div>
                     </v-card-title>
                 </v-card>
@@ -327,14 +327,34 @@
         menu2: false,
 
         registerForm: false,
+        items: [
+                {
+                 src: require('@/assets/images/theater2.png')
+                },
+                {
+                    src: require('@/assets/images/theater1.png')
+                },
+                {
+                    src: require('@/assets/images/theater3.png')
+                },
+                {
+                    src: require('@/assets/images/theater4.png')
+                }
+            ],
 
-        theater: {                theaterId : '',
-                name: '',
-                location : '',
-                time: '',
-                personnel: '',
-                facilities: '',
-                size: ' '},
+        theater: {                
+            theaterID : '',
+            city : '',
+            name: '',
+            location : '',
+            time: "09:00 - 21:00",
+            size: ' ',
+            openYear:'',
+            rate:'',
+            telNumber:'',
+            impossibleDate:[],
+            reservedDate:[]
+        },
 
         register_info: {
             category: '',
@@ -412,50 +432,50 @@
         today: new Date().getDate().toString,
         events: [
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-10',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-11',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-12',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-13',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-14',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-15',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-16',
           open: false
         },
         {
-          title: '코딩시러',
-          details: '코딩을 싫어하는 개발자의 이야기',
+          title: '플라잉',
+          details: '무용',
           date: '2019-06-17',
           open: false
         }
@@ -489,7 +509,7 @@
         
         submit () {
             if (this.$refs.form.validate()) {
-                alert(theater_infos[0].name)
+                alert("예약이 완료되었습니다!")
                 this.registerForm = false;      
             }
         },
@@ -504,104 +524,12 @@
           alert(this.$route.params.theaterId)
         },
         init(){
-            if(this.$route.params.theaterId == 1){
-                this.theater = {
-                                    theaterId : 1,
-                                    name: "대학로 창조 소극장",
-                                    location : "서울특별시 종로구 창경궁로 259 2층 창조소극장",
-                                    time: "09:00 - 21:00",
-                                    personnel:"100석",
-                                    facilities:"무대, 음향, 무대기계",
-                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
-                                    items: [
-                                        {
-                                            src: require('@/assets/images/theater1.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        },
-                                        {
-                                            src: require('@/assets/images/theater1.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        }
-                                    ],
-                                };
-            }else if(this.$route.params.theaterId == 2){
-                this.theater =  {
-                                    theaterId : 2,
-                                    name: "명보 아트홀",
-                                    location : "서울특별시 종로구 을지로동 마른내로47",
-                                    time: "09:00 - 21:00",
-                                    personnel:"200석",
-                                    facilities:"무대, 음향, 무대기계, 연습, 피아노",
-                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
-                                    items: [
-                                        {
-                                            src: require('@/assets/images/theater2.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        },
-                                        {
-                                            src: require('@/assets/images/theater2.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        }
-                                    ],
-                                };
-            }else if(this.$route.params.theaterId == 3){
-                this.theater =  {
-                                    theaterId : 3,
-                                    name: "두산아트센터",
-                                    location : "서울특별시 종로구 연지동 270",
-                                    time: "09:00 - 21:00",
-                                    personnel:"300석",
-                                    facilities:"무대, 음향, 피아노",
-                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
-                                    items: [
-                                        {
-                                            src: require('@/assets/images/theater3.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        },
-                                        {
-                                            src: require('@/assets/images/theater3.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        }
-                                    ],
-                                };
-            }else{
-                this.theater =  {
-                                    theaterId : 4,
-                                    name: "강동아트센터",
-                                    location : "서울특별시 강동구 상일동 동남로 870",
-                                    time: "09:00 - 21:00",
-                                    personnel:"400석",
-                                    facilities:"무대, 음향, 무대기계, 연습, 피아노",
-                                    size: "너비 6m * 깊이 5m * 높이 2.8m",
-                                    items: [
-                                        {
-                                            src: require('@/assets/images/theater4.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        },
-                                        {
-                                            src: require('@/assets/images/theater4.png')
-                                        },
-                                        {
-                                            src: require('@/assets/images/cat.jpg')
-                                        }
-                                    ],
-                                };
-
-            }
+            //this.$route.params.theaterId
+            this.$http.get('/api/theater/FC001672').then((result)=>{
+                this.theater = result.data;
+            }).catch((err)=>{
+                console.log(err);
+            });
         }
     },
     
@@ -648,18 +576,18 @@
 }
 
 .info_title{
-    width: 120px;
+    width: 130px;
     text-align: left;
 }
 
 .similar{
-    height: 500px;
+    height: 550px;
     width: 300px;
     margin-left: 35px;
 }
 
 #review{
-    width: 500px;
+    width: 630px;
 }
 
 .my-event {
