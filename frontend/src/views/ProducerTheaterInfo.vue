@@ -33,7 +33,7 @@
                             <v-layout row wrap> <div class="info_title">부대시설</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">무대, 음향, 무대기계, 연습, 피아노</div> </v-layout>
                             <v-layout row wrap> <div class="info_title">공연장 연락처</div> &nbsp;&nbsp;&nbsp; <div style="width=200px">{{theater.telNumber}}</div> </v-layout>
                         </div>
-                    </v-card-title>
+                    <!-- </v-card-title> -->
                 </v-flex>
             </v-layout>
                 

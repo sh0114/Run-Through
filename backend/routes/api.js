@@ -10,7 +10,7 @@ const theaterModel = require('../db/models/theater');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=10',function(err, response, body){
+  request('http://www.kopis.or.kr/openApi/restful/prfplc?service=bf1f3f149c284564bd1cd14efc61818f&cpage=1&rows=20',function(err, response, body){
       if(!err && response.statusCode == 200){
           var xml = body;
           var result = convert.xml2json(xml, {compact: true, spaces: 4});
@@ -54,7 +54,6 @@ function waitFunc(i){
         var answer = JSON.parse(result).dbs.db;
         console.log(answer);
         theaterModel.findOneAndUpdate({theaterID:id},{
-            city:"수원",
             size: answer.seatscale._text,
             telNumber: answer.telno._text,
             location: answer.adres._text
@@ -65,6 +64,13 @@ function waitFunc(i){
         });
     });
 }
+
+router.get('/theater/:id', function(req, res, next){
+  theaterModel.findOne({theaterID: req.params.id}, function(err, result){
+    if(err) console.log(err);
+    res.send(result);
+  })
+});
 
 
 module.exports = router;
