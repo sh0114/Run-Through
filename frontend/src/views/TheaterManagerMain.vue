@@ -1,10 +1,9 @@
 <template>
     <div id="TMmainpage">
         <v-container fluid grid-list-md>
-          <v-layout row wrap justify-center>
-            <v-flex d-flex xs6 sm6 md4>
-              <v-sheet height="500" v-on:click="goBookingCalendar">
-                <!-- <h3>{{ month }}월</h3> -->
+          <v-layout row wrap justify-center style="margin-top:100px">
+            <v-flex d-flex xs6 sm6 md6>
+              <!-- <v-sheet height="500" v-on:click="goBookingCalendar">
                 <v-calendar
                   ref="calendar"
                   v-model="start"
@@ -13,18 +12,23 @@
                   color="primary"
                   :short-months="false"
                 ></v-calendar>
-              </v-sheet>
+              </v-sheet> -->
+              <img style="height:500px;cursor:pointer;" v-on:click="goBookingCalendar" :src="require('@/assets/images/05/theater.png')"/>
             </v-flex>
 
-            <v-flex d-flex xs6 sm6 md4>
-              <img :src="require('@/assets/images/03/graph_1.png')" v-on:click="goStatistics"/>
+            <v-flex d-flex xs6 sm6 md3>
+              
+              <img style="height:500px" :src="require('@/assets/images/05/memo.png')"/>
             </v-flex>
             <br><br>
           </v-layout>
           <v-layout wrap justify-center>
+              <img style="width:80%;height:auto;cursor:pointer;" :src="require('@/assets/images/05/datavisualizing.png')" v-on:click="goStatistics"/>
+          </v-layout>
+          <v-layout wrap justify-center>
             <v-flex d-flex xs12 sm12 md6>
 
-              <h2 style="margin-top:30px;curser:pointer;" v-on:click="goReview">Go to Review Page</h2>
+              <v-btn style="margin-top:30px;background-color:#2044AA;color:white;text-align:center;" v-on:click="goReview">Go to Review Page</v-btn>
             </v-flex>
           </v-layout>
         

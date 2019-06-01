@@ -1,6 +1,6 @@
 <template>
     <div id="TMbooking">
-        <v-container fluid grid-list-md>
+        <v-container style="margin-top:100px" fluid grid-list-md>
             <v-layout row wrap justify-center>
                 <v-flex d-flex xs6 sm6 md6>
                     <v-sheet height="600">
@@ -14,7 +14,7 @@
                             :short-months="false">
                             <template v-slot:day="{ date }">
                                 <template v-for="day in impossibleMap[date]">
-                                    <div :key="day">예약불가</div>
+                                    <div :key="day" style="color:red">예약불가</div>
                                 </template>
                                 <template v-for="day in eventsMap[date]">
                                     <div :key="day" v-html="day.title"></div>
@@ -47,14 +47,14 @@
                         - 예약 불가능 일자 선택
                      -->
                     <v-sheet>
-                        <v-btn v-on:click="chooseImpossibleDate">대관 가능일 설정</v-btn>
-                        <v-btn v-on:click="saveDate">저장</v-btn>
+                        <v-btn style="background-color:#F5695F;color:white;" v-on:click="chooseImpossibleDate">대관 가능일 설정</v-btn>
+                        <v-btn style="background-color:#F5695F;color:white;" v-on:click="saveDate">저장</v-btn>
                         <v-date-picker 
                             v-if="showDatePicker"
                             multiple
                             v-model="impossible" 
                             :landscape="landscape" 
-                            color="green lighten-1"
+                            color="#2044AA"
                             :reactive="reactive">
                         </v-date-picker>
                     </v-sheet>
@@ -103,6 +103,8 @@
             isChangeMonth: false,
             selectedDate: new Date().toISOString().substr(0, 10),
             impossible: [
+                '2019-05-13',
+                '2019-05-14',
                 '2019-06-02',
                 '2019-06-04',
             ],
@@ -134,25 +136,39 @@
             ],
             events: [
                 {
-                    title: "코딩은 너무 힘드러",
-                    startDate: "2019-06-12",
-                    endDate: "2019-06-14",
-                    producer: "run-thru",
-                    genre: "연극"
-                },
-                {
-                    title: "집가고싶다",
-                    startDate: "2019-06-12",
-                    endDate: "2019-06-23",
-                    producer: "wonjung",
+                    title: "플라잉",
+                    startDate: "2019-06-03",
+                    endDate: "2019-06-31",
+                    producer: "(주)페르소나",
                     genre: "뮤지컬"
                 },
                 {
-                    title: "버블티 꺄아악",
-                    startDate: "2019-05-20",
+                    title: "인싸이드",
+                    startDate: "2019-05-23",
+                    endDate: "2019-06-04",
+                    producer: "극단 달팽이주파수",
+                    genre: "연극"
+                },
+                {
+                    title: "광대, 1894",
+                    startDate: "2019-05-15",
                     endDate: "2019-05-27",
-                    producer: "grape",
-                    genre: "연주회"
+                    producer: "고창농악보존회",
+                    genre: "국악"
+                },
+                {
+                    title: "렌드미어 테너",
+                    startDate: "2019-06-15",
+                    endDate: "2019-07-27",
+                    producer: "이매진디아츠팩토리",
+                    genre: "연극"
+                },
+                {
+                    title: "메피스토",
+                    startDate: "2019-06-17",
+                    endDate: "2019-07-15",
+                    producer: "(주)메이커스프로덕션",
+                    genre: "뮤지컬"
                 },
             ],
             visibleEvents: []

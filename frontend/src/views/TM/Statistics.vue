@@ -1,6 +1,9 @@
 <template>
     <div id="TMstatistics">
-        <h1>매출 통계 페이지</h1>
+        <img style="width:70%;margin-top:50px" 
+          :src="require('@/assets/images/05/03_datavisualizing.png')"/>
+        <img style="width:70%;margin-top:30px" 
+          :src="require('@/assets/images/05/graph.png')"/>
         
     </div>
 </template>
