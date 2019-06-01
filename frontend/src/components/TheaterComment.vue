@@ -4,7 +4,7 @@
       <v-data-table
         hide-actions
         :headers="headers"
-        :items="items"
+        :items="reviews"
         :pagination.sync="pagination"
         rows-per-page-text
         class="elevation-1"
@@ -30,6 +30,16 @@ export default {
     name: "TheaterComment",
     data: function(){
         return{
+            computed: {
+                getAvgRate(){
+                    var sum = 0;
+                    var array = this.reviews;
+                    for(var i=0;i<array.length;i++){
+                        sum += array[i].rate;
+                    }
+                    return sum/array.length;
+                }
+            },
             headers: [
                 { text: '글번호', sortable: false, value: 'postNumber', align: "center" },
                 { text: '작성자', sortable: false, value: 'writer', align: "center" },
@@ -37,40 +47,22 @@ export default {
                 { text: '작성시간', sortable: false, value: 'createAt', align: "center" },
                 { text: '별점', sortable: false, value: 'starRate', align: "center" },
             ],
-            items:[
-                {
-                    postNumber:1,
-                    writer:"sunghee",
-                    content:"comment1",
-                    createAt: "2019-06-01",
-                    starRate:5
+            reviews:[
+               {
+                    title: "너무 맘에 들어요",
+                    details: "너무너무너무너무너무 맘에 들어요!! 끼아아악!",
+                    rate: 4.5
                 },
                 {
-                    postNumber:2,
-                    writer:"sunghee",
-                    content:"comment1",
-                    createAt: "2019-06-01",
-                    starRate:5
-                },
-                {
-                    postNumber:3,
-                    writer:"sunghee",
-                    content:"comment1",
-                    createAt: "2019-06-01",
-                    starRate:5
-                },
-                {
-                    postNumber:4,
-                    writer:"sunghee",
-                    content:"comment1",
-                    createAt: "2019-06-01",
-                    starRate:5
-                },
+                    title: "솔직히 좀 별로였습니다",
+                    details: "생각보다 공연 시설이 낡아서 맘에 안들었어요. 공연장 사진도 최신으로 업데이트 해주세요ㅡㅡ",
+                    rate: 1.5
+                }
             ],
 
             pagination: {
                 rowsPerPage: 10,
-                totalItems: 4,
+                totalItems: 5,
                 page: 1,
                 sortBy:'postNumber',
                 descending: true
