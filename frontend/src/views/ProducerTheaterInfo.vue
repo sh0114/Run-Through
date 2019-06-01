@@ -1,5 +1,5 @@
 <template>
-    <div id="mainpage">
+    <div id="producerTheaterInfo">
         <h1>공연장 정보</h1>
         <LinkFooter />
     </div>
