@@ -9,7 +9,7 @@
               </v-card>
             </v-flex>
           </v-layout>
-          <v-form>
+          <v-form ref="form">
             <v-layout row>
               <v-flex xs6 class="appData">
                 <v-select
@@ -172,11 +172,19 @@
       producerSearchInfo
     },
     methods:{
+        reset(){
+          this.$refs.form.reset()
+        },
         goPDTheaterInfo(){
             this.$router.push('/producerTheaterInfo')
         },
         search(){
-          alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size)
+          if(this.$refs.form.validate()){
+            alert(this.event_info.location+""+this.event_info.term+""+this.event_info.category+""+this.event_info.size)
+          }
+          else{
+            alert("항목을 다 채워주세요!")
+          }
         }
         
     },
@@ -184,15 +192,18 @@
     data(){
         return{
             event_info: {
-              location:"위치",
-              term:"기간",
-              category:"장르",
-              size:"좌석수" 
+              location:null,
+              term:null,
+              category:null,
+              size:null 
             },
             startDate: null,
             endDate: null
         }
     },
+    created(){
+      this.reset()
+    }
 
   }
 </script>
