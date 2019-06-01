@@ -43,7 +43,7 @@
                 </v-flex>
                 <v-flex xs6 class="addData">
                   <v-select
-                    :items="['서울특별시', '경기도', '인천광역시', '강원도', '대전광역시', '제주도', '광주광역시', '부산광역시', '울산광역시', '대구광역시']"
+                    :items="['서울', '경기', '인천', '강원', '대전', '제주', '광주', '부산', '울산', '대구']"
                     label="어느 도시에서 공연하실 예정인가요?"
                     required
                     v-model="event_info.location"
@@ -73,11 +73,11 @@
                         @click="go">
                         <v-layout>       
                             <v-flex xs6>
-                              <v-img
+                              <!-- <v-img
                                 :src= "theater.img"
                                 height="150px"
                                 @click="goPDTheaterInfo"
-                              ></v-img>
+                              ></v-img> -->
                             </v-flex>
                             <v-flex xs6>
                               <v-card-title primary-title>
@@ -170,11 +170,14 @@
           
             this.$http.get('/api/search/'+this.event_info.location+'/'+this.event_info.min_size+'/'+this.event_info.max_size)
             .then((result)=>{
-              this.theaters = result.data
+              console.log(result)
+              this.theaters = result
               console.log(this.theaters)
+              alert(result)
             })
-            .cathch((err)=>{
+            .catch((err)=>{
               console.log(err)
+              alert(err)
             })
           }
           else{
@@ -199,34 +202,14 @@
             },
             startDate: null,
             endDate: null,
-            theaters:[
-              {
-                img: require('@/assets/images/theater1.png'),
-                name: "대학로 창조 소극장",
-                location: "서울특별시 종로구 창경궁로 259 2층 창조소극장",
-                id: 1,
-              },
-              {
-                img: require('@/assets/images/theater2.png'),
-                name: "명보 아트홀",
-                location: "서울특별시 종로구 을지로동 마른내로 47",
-                id: 2,
-              },
-              {
-                img: require('@/assets/images/theater3.png'),
-                name: "두산아트센터",
-                location: "서울특별시 종로구 연지동 270",
-                id: 3,
-              },
-              {
-                img: require('@/assets/images/theater4.png'),
-                name: "강동아트센터",
-                location: "서울특별시 강동구 상일동 동남로 870",
-                id: 4,
-              },            
-            ]
-
+            theaters: null,
         }
+    },
+    watch:{
+      data : function(){
+        this.theaters = this.data.theaters
+        this.e_select = this.data.selectedDate
+      }
     },
     created(){
       this.reset()

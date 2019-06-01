@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 
           for (var i in answer.dbs.db){
             var ans = answer.dbs.db[i];
+            console.log(ans);
             var theater = new theaterModel({
                 theaterID: ans.mt10id._text,
                 city: ans.sidonm._text,
@@ -41,6 +42,19 @@ router.get('/list',function(req, res, next){
             await waitFunc(item);
         }
         res.send("다시 저장 완료");
+    })
+})
+router.get('/search/:location/:minSize/:maxSize',function(req, res, next){
+    minSize = parseInt(req.params.minSize);
+    maxSize = parseInt(req.params.maxSize);
+    theaterModel.find({
+        city:req.params.location,
+        size:{$gte:minSize},
+        size:{$lte:maxSize}
+    }, function(err, theaters){
+            if(err) console.log(err)
+            console.log(theaters);
+            res.send(theaters);
     })
 })
 
