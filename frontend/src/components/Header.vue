@@ -23,7 +23,10 @@ export default {
     margin-left: 10%;
     margin-right: 10%;
 
-    background: linear-gradient( to right, #2044AA, #F5695F );;
+    background: linear-gradient( to right, #2044AA, #F5695F );
+
+    margin-bottom: -50px;
+    z-index: 7;
 }
 
 
