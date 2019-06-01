@@ -82,17 +82,13 @@
             </div>
         </v-container>
             
-        <LinkFooter />
     </div>
 </template>
 
 <script>
 
-  import LinkFooter from '../../components/LinkFooter'
-
   export default {
     components: {
-      LinkFooter,
     },
     created(){
         // 공연 정보 전부 받아오기

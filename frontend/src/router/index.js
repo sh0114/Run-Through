@@ -17,7 +17,7 @@ export default new Router({
       component: () => import('../views/ProducerResult.vue')
     },
     {
-      path: '/theaterManager',
+      path: '/theater-manager',
       name: 'TheaterManager',
       component: () => import('../views/TheaterManagerMain.vue')
     },
