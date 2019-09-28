@@ -1,9 +1,3 @@
-## 소위즈 개발자 여러분들 최고
-## 개발은 진짜 전체 1등이었는데 해커톤 놈들.....
---------------------------------
+# 예술 해커톤
 
-같은 팀이어서 행복했어요. <br>
-저는 개인적으로 고수들은 코딩을 어떻게 하는지 잘 볼 수 있는 소중한 기회였습니다. <br>
-박스가 움직여서 다행입니다. <br>
-사랑해요
-다 에이쁠 받으세요
+RunThrough presentation: https://drive.google.com/file/d/1vX9qjJEKcaN7p8h4ybS66r9XLdssAbe2/view?usp=sharing
